@@ -1,6 +1,6 @@
-public abstract class Circle extends Geometricobject {
+public abstract class Circle extends GeometricObject {
 	//Variables
-	private double radius;
+	protected double radius;
 
 	//Constructors:
 	//Default
@@ -19,15 +19,18 @@ public abstract class Circle extends Geometricobject {
 	public double getRadius() {
 		return ( this.radius );
 	}
-	
+
 	//Find
 	public double findArea() {
 		return ( this.radius * this.radius * Math.PI );
 	}
+	public double findArea(double t) {
+		return ( ( this.radius - t ) * ( this.radius - t ) * Math.PI );
+	}
 	public double findCircumference() {
 		return ( this.radius * 2 * Math.PI );
 	}
-	private String toString() {
-		return ( " Density: " + super.density + " Radius: " + this.radius );
+	public String toString() {
+		return ( " Density: " + super.density + "\n Radius: " + this.radius );
 	}
 }
