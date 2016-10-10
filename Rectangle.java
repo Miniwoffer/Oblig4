@@ -2,10 +2,18 @@
  * Ver 1.0
  */
 
-abstract class Rectangle extends GeometricObject{
+abstract class Rectangle extends GeometricObject
+{
     private double width;
     private double height;
     
+    Rectangle(){this(5,5);}
+    Rectangle(double w, double h)
+    {
+        width = w;
+        height = h;
+    }
+
     //sets the width to a possitive version of w
     void setWidth(double w){width = w > 0 ? w : w * -1;}
     
@@ -21,5 +29,5 @@ abstract class Rectangle extends GeometricObject{
     
     //returns the circumfirance of the Rectangle by multiplying the biggest of 
     //height and width with 2*PI
-    double findCircumfirance(){return 2*Math.PI* (width > height ? width : height);}
+    double findCircumference(){return 2*Math.PI* (width > height ? width : height);}
 }

@@ -1,13 +1,11 @@
 abstract class GeometricObject {
 	//Variables
-	private double density;
+	protected static double density = 7.8;
 	//Constructor
-	GeometricObject() {
-		this.density = 7.8;
-	}
+	GeometricObject() {};
 	//Abstract methods
 	abstract double findArea();
-	abstract double findVolume();
+	abstract double findVolum();
 	abstract double findCircumference();
 	abstract double findSurfaceArea();
 	abstract double findWeight();
