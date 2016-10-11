@@ -4,4 +4,4 @@
 
 
 ## UML Drawing
-![UML drawing](/uml.png)
+![UML drawing](UML.png)
