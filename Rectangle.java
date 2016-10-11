@@ -29,5 +29,5 @@ abstract class Rectangle extends GeometricObject
     
     //returns the circumfirance of the Rectangle by multiplying the biggest of 
     //height and width with 2*PI
-    double findCircumference(){return 2*Math.PI* (width > height ? width : height);}
+    double findCircumference(){return 2*(width+height);}
 }
