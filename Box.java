@@ -25,14 +25,14 @@ class Box extends Rectangle
     double getLength(){return length;}
     double getThickness(){return thickness;}
 
-    double findVolum()
+    double findVolume()
     {
         double innerVol = 0;
         if(thickness > 0)
         {
             double t2 = thickness*2;
             Box innerBox = new Box(getWidth()-t2,getHeight()-t2,length-t2,0);
-            innerVol = innerBox.findVolum();
+            innerVol = innerBox.findVolume();
         }
         return getWidth()*getHeight()*length-innerVol;
     }
@@ -49,7 +49,7 @@ class Box extends Rectangle
     }
     double findWeight()
     {
-        return findVolum()*density;
+        return findVolume()*density;
     }
     
 }

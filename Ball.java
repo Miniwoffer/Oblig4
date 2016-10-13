@@ -4,14 +4,14 @@ class Ball extends Circle
     double thickness;
     Ball()
     {
-        Ball(5,2);
+        this(5,2);
     }
     Ball(double r,double t)
     {
         super(5);
         thickness = 2;
     }
-    double findVolum()
+    double findVolume()
     {
         double innerVolum = 0;
         if(thickness > 0)
@@ -31,7 +31,7 @@ class Ball extends Circle
     }
     double findWeight()
     {
-        return findVolum()*density;
+        return findVolume()*density;
     }
     void setThickness(double t){thickness = t > 0 && t < radius ? t : 0;}
     double getThickness(){return thickness;}
