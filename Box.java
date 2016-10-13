@@ -18,7 +18,7 @@ class Box extends Rectangle
     {
         if(t < 0)
             t *= -1;
-        if(t >= length/2 || t >= getWidth()/2 || t >= getHeight()/2)
+        if(t >= length/2 || t >= width/2 || t >= height/2)
             t = 0;
         thickness = t;
     } 
@@ -27,29 +27,23 @@ class Box extends Rectangle
 
     double findVolume()
     {
+        return width*height*length;
+    }
+    double findSurfaceArea()
+    {
+        return 2*(width*height+width*length+height*length);
+    }
+    double findWeight()
+    {
         double innerVol = 0;
         if(thickness > 0)
         {
             double t2 = thickness*2;
-            Box innerBox = new Box(getWidth()-t2,getHeight()-t2,length-t2,0);
+            Box innerBox = new Box(width-t2,height-t2,length-t2,0);
             innerVol = innerBox.findVolume();
         }
-        return getWidth()*getHeight()*length-innerVol;
-    }
-    double findSurfaceArea()
-    {
-        double innerSurface = 0;
-        if(thickness > 0)
-        {
-            double t2 = thickness*2;
-            Box innerBox = new Box(getWidth()-t2,getHeight()-t2,length-t2,0);
-            innerSurface = innerBox.findSurfaceArea();
-        }
-        return 2*(getWidth()*getHeight()+getWidth()*length+getHeight()*length) + innerSurface;
-    }
-    double findWeight()
-    {
-        return findVolume()*density;
+
+        return (findVolume()-innerVol)*density;
     }
     
 }

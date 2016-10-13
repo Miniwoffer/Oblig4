@@ -4,8 +4,8 @@
 
 abstract class Rectangle extends GeometricObject
 {
-    private double width;
-    private double height;
+    protected double width;
+    protected double height;
     
     Rectangle(){this(5,5);}
     Rectangle(double w, double h)
