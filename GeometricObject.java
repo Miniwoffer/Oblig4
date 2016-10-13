@@ -5,7 +5,7 @@ abstract class GeometricObject {
 	GeometricObject() {};
 	//Abstract methods
 	abstract double findArea();
-	abstract double findVolum();
+	abstract double findVolume();
 	abstract double findCircumference();
 	abstract double findSurfaceArea();
 	abstract double findWeight();
