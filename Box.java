@@ -29,21 +29,23 @@ class Box extends Rectangle
     {
         return width*height*length;
     }
+    double findIVolum()
+    {
+        if(thickness > 0)
+        {
+            double t2 = thickness*2;
+            Box innerBox = new Box(width-t2,height-t2,length-t2,0);
+            return = innerBox.findVolume();
+        }
+        return 0;
+    }
     double findSurfaceArea()
     {
         return 2*(width*height+width*length+height*length);
     }
     double findWeight()
     {
-        double innerVol = 0;
-        if(thickness > 0)
-        {
-            double t2 = thickness*2;
-            Box innerBox = new Box(width-t2,height-t2,length-t2,0);
-            innerVol = innerBox.findVolume();
-        }
-
-        return (findVolume()-innerVol)*density;
+        return (findVolume()-findIVolum())*density;
     }
     
 }
