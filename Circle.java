@@ -1,7 +1,6 @@
 public abstract class Circle extends GeometricObject {
 	//Variables
 	protected double radius;
-
 	//Constructors:
 	//Default
 	Circle() {
@@ -11,7 +10,6 @@ public abstract class Circle extends GeometricObject {
 	Circle( double r ) {
 		this.radius = r;
 	}
-
 	//get + set
 	public void setRadius( double r ) {
 		this.radius = r;
@@ -19,7 +17,6 @@ public abstract class Circle extends GeometricObject {
 	public double getRadius() {
 		return ( this.radius );
 	}
-
 	//Find
 	public double findArea() {
 		return ( this.radius * this.radius * Math.PI );
