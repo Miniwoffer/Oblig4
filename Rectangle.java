@@ -4,8 +4,8 @@
 
 abstract class Rectangle extends GeometricObject
 {
-    private double width;
-    private double height;
+    protected double width;
+    protected double height;
     
     Rectangle(){this(5,5);}
     Rectangle(double w, double h)
@@ -26,6 +26,7 @@ abstract class Rectangle extends GeometricObject
 
     //returns the area of the Rectangle
     double findArea(){return width*height;}
+
     
     //returns the circumfirance of the Rectangle by multiplying the biggest of 
     //height and width with 2*PI
