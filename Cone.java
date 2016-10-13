@@ -1,33 +1,32 @@
-public class Cylinder extends Circle {
+
+public class Cone extends Circle {
 	private double length;
 	private double thickness;
 
-	//constructors:
-	//default
-	Cylinder() {
+	Cone() {
 		super();
 		this.length = 1.0;
 		this.thickness = 1.0;
 	}
-	//Defined Radius
-	Cylinder( double r ) {
+	Cone( double r ) {
 		super( r );
 		this.length = 1.0;
 		this.thickness = 1.0;
 	}
-	//Defined Radius and Length
-	Cylinder( double r, double l ) {
+	Cone( double r, double l ) {
 		super( r );
 		this.length = l;
 		this.thickness = 1.0;
 	}
-	//Defined Radius, length and Thickness
-	Cylinder( double r, double l, double t ) {
+	Cone( double r, double l, double t) {
 		super( r );
 		this.length = l;
 		this.thickness = t;
 	}
-	//Get + set
+
+
+
+
 	public double getThickness() {
 		return this.thickness;
 	}
@@ -35,12 +34,13 @@ public class Cylinder extends Circle {
 		//Lager ikke input handler ettersom det skal brukes GUI;
 		this.thickness = t;
 	}
+
 	//findVolume, findSurfaceAre, findWeight;
 	public double findVolume() {
-		return ( super.findArea() * this.length );
+		return ( (1 / 3) * super.findArea() * this.length );
 	}
 	public double findIVolume() {
-		return ( super.findArea( this.thickness ) * ( this.length - this.thickness * 2 ) );
+		return ( super.findArea( this.thickness ) * (this.length - this.thickness * 2) );
 	}
 	public double findWeight() {
 		return ( ( this.findVolume() - this.findIVolume() ) * super.density );
@@ -49,7 +49,7 @@ public class Cylinder extends Circle {
 		return ( super.findArea() * 2 + super.findCircumference() * this.length );
 	}
 	public String toString() {
-		return "Cylinder: \n" + super.toString() + "\n Length: " + this.length + "\n Thickness: " + this.thickness + "\n TotVolume: " + this.findVolume()
+		return "Cone: \n" + super.toString() + "\n Length: " + this.length + "\n Thickness: " + this.thickness + "\n TotVolume: " + this.findVolume()
 		+ "\n InnerVolume: " + this.findIVolume() + "\n SurfaceArea: " + this.findSurfaceArea();
 	}
 }

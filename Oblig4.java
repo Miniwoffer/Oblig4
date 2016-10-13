@@ -1,10 +1,11 @@
 public class Oblig4 {
 	public static void main(String[] args) {
 		//test object
-		Cylinder c = new Cylinder(1, 1, 0.5);
+		Cylinder c = new Cylinder(2, 2, 0.5);
 		log(c.toString());
 
-
+		Cone cone = new Cone(1, 1, 0.5);
+		log(cone.toString());
 	}
 
 
