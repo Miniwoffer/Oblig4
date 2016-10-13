@@ -13,25 +13,23 @@ class Ball extends Circle
     }
     double findVolume()
     {
-        double innerVolum = 0;
+        return 4/3*Math.PI*Math.pow(radius,3);
+    }
+    double findIVolum()
+    {
         if(thickness > 0)
         {
-            innerVolum = 4/3*Math.PI*Math.pow(radius-thickness,3);
+             return 4/3*Math.PI*Math.pow(radius-thickness,3);
         }
-        return 4/3*Math.PI*Math.pow(radius,3)-innerVolum;
+        return 0;
     }
     double findSurfaceArea()
     {
-        double innerSurface = 0;
-        if(thickness > 0)
-        {
-            innerSurface = 4*Math.PI*Math.pow(radius-thickness,2);
-        }
-        return 4*Math.PI*Math.pow(radius,2)+innerSurface;
+        return 4*Math.PI*Math.pow(radius,2);
     }
     double findWeight()
     {
-        return findVolume()*density;
+        return (findVolume()-findIVolum())*density;
     }
     void setThickness(double t){thickness = t > 0 && t < radius ? t : 0;}
     double getThickness(){return thickness;}
