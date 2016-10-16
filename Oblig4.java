@@ -11,7 +11,10 @@ public class Oblig4 {
 		log(cone.toString());
 
 		Ball ball = new Ball(2, 0.5);
-		//log(ball.toString());
+        log(ball.toString());
+
+        Box box = new Box(5,5,5,2);
+        log(box.toString());
 
 		String[] functions = {"findArea", "findVolume"};
 

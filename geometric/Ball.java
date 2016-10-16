@@ -16,7 +16,7 @@ public class Ball extends Circle
     {
         return 4/3*Math.PI*Math.pow(radius,3);
     }
-    double findIVolum()
+    double findIVolume()
     {
         if(thickness > 0)
         {
@@ -30,8 +30,18 @@ public class Ball extends Circle
     }
     public double findWeight()
     {
-        return (findVolume()-findIVolum())*density;
+        return (findVolume()-findIVolume())*density;
     }
     public void setThickness(double t){thickness = t > 0 && t < radius ? t : 0;}
     public double getThickness(){return thickness;}
+    public String toString() 
+    {
+        return "Ball: \n" +
+            super.toString() +
+            "\n Thickness: " + thickness +
+            "\n TotVolume: " + findVolume() +
+            "\n InnerVolume: " + findIVolume() +
+            "\n SurfaceArea: " + findSurfaceArea();
+
+    }
 }

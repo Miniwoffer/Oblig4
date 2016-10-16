@@ -8,15 +8,15 @@ public class Box extends Rectangle
 {
     private double length;
     private double thickness;
-    Box(){this(5,5,5,2);}
-    Box(double w, double h, double l, double t)
+    public Box(){this(5,5,5,2);}
+    public Box(double w, double h, double l, double t)
     {
         super(w,h);
         length = l;
         thickness = t;
     }
-    void setLength(double l){length = l > 0 ? l : l * -1;}
-    void setThickness(double t)
+    public void setLength(double l){length = l > 0 ? l : l * -1;}
+    public void setThickness(double t)
     {
         if(t < 0)
             t *= -1;
@@ -24,14 +24,14 @@ public class Box extends Rectangle
             t = 0;
         thickness = t;
     } 
-    double getLength(){return length;}
-    double getThickness(){return thickness;}
+    public double getLength(){return length;}
+    public double getThickness(){return thickness;}
 
-    double findVolume()
+    public double findVolume()
     {
         return width*height*length;
     }
-    double findIVolum()
+    double findIVolume()
     {
         if(thickness > 0)
         {
@@ -41,13 +41,23 @@ public class Box extends Rectangle
         }
         return 0;
     }
-    double findSurfaceArea()
+    public double findSurfaceArea()
     {
         return 2*(width*height+width*length+height*length);
     }
-    double findWeight()
+    public double findWeight()
     {
-        return (findVolume()-findIVolum())*density;
+        return (findVolume()-findIVolume())*density;
+    }
+    public String toString()
+    {
+        return "Box: \n" + 
+            super.toString() + 
+            "\n Length: " + length +
+            "\n Thickness: " + thickness +
+            "\n TotVolume: " + findVolume() +
+            "\n InnerVolume: " + findIVolume() +
+            "\n SurfaceArea: " + findSurfaceArea();
     }
     
 }
