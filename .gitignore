@@ -1,5 +1,8 @@
 *.class
 
+#ignore the build directory
+build/
+
 .*.swp
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
