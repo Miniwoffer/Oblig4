@@ -1,9 +1,10 @@
+package geometric;
 
 /* Box class
  * ver 1.0
  */
 
-class Box extends Rectangle
+public class Box extends Rectangle
 {
     private double length;
     private double thickness;
@@ -36,7 +37,7 @@ class Box extends Rectangle
         {
             double t2 = thickness*2;
             Box innerBox = new Box(width-t2,height-t2,length-t2,0);
-            return = innerBox.findVolume();
+            return innerBox.findVolume();
         }
         return 0;
     }

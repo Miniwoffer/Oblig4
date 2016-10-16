@@ -1,28 +1,30 @@
+package geometric;
+
 public class Cylinder extends Circle {
 	private double length;
 	private double thickness;
 
 	//constructors:
 	//default
-	Cylinder() {
+	public Cylinder() {
 		super();
 		this.length = 1.0;
 		this.thickness = 1.0;
 	}
 	//Defined Radius
-	Cylinder( double r ) {
+	public Cylinder( double r ) {
 		super( r );
 		this.length = 1.0;
 		this.thickness = 1.0;
 	}
 	//Defined Radius and Length
-	Cylinder( double r, double l ) {
+	public Cylinder( double r, double l ) {
 		super( r );
 		this.length = l;
 		this.thickness = 1.0;
 	}
 	//Defined Radius, length and Thickness
-	Cylinder( double r, double l, double t ) {
+	public Cylinder( double r, double l, double t ) {
 		super( r );
 		this.length = l;
 		this.thickness = t;

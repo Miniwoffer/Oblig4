@@ -1,3 +1,5 @@
+package geometric;
+
 abstract class GeometricObject {
 	//Variables
 	protected static double density = 7.8;

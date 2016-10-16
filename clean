@@ -1,3 +1,5 @@
 #!/bin/bash
-rm -r *.class 
+rm -r *.class
+rm -r geometric/*.class
 rm -r .*.swp
+rm -r geometric/.*.swp

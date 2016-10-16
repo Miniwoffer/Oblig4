@@ -1,3 +1,5 @@
+package geometric;
+
 public abstract class Circle extends GeometricObject {
 	//Variables
 	protected double radius;

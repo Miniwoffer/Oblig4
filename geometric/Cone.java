@@ -1,24 +1,25 @@
+package geometric;
 
 public class Cone extends Circle {
 	private double length;
 	private double thickness;
 
-	Cone() {
+	public Cone() {
 		super();
 		this.length = 1.0;
 		this.thickness = 1.0;
 	}
-	Cone( double r ) {
+	public Cone( double r ) {
 		super( r );
 		this.length = 1.0;
 		this.thickness = 1.0;
 	}
-	Cone( double r, double l ) {
+	public Cone( double r, double l ) {
 		super( r );
 		this.length = l;
 		this.thickness = 1.0;
 	}
-	Cone( double r, double l, double t) {
+	public Cone( double r, double l, double t) {
 		super( r );
 		this.length = l;
 		this.thickness = t;

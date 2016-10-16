@@ -1,17 +1,18 @@
+package geometric;
 
-class Ball extends Circle 
+public class Ball extends Circle 
 {
     double thickness;
-    Ball()
+    public Ball()
     {
         this(5,2);
     }
-    Ball(double r,double t)
+    public Ball(double r,double t)
     {
-        super(5);
-        thickness = 2;
+        super(r);
+        setThickness(t);
     }
-    double findVolume()
+    public double findVolume()
     {
         return 4/3*Math.PI*Math.pow(radius,3);
     }
@@ -23,14 +24,14 @@ class Ball extends Circle
         }
         return 0;
     }
-    double findSurfaceArea()
+    public double findSurfaceArea()
     {
         return 4*Math.PI*Math.pow(radius,2);
     }
-    double findWeight()
+    public double findWeight()
     {
         return (findVolume()-findIVolum())*density;
     }
-    void setThickness(double t){thickness = t > 0 && t < radius ? t : 0;}
-    double getThickness(){return thickness;}
+    public void setThickness(double t){thickness = t > 0 && t < radius ? t : 0;}
+    public double getThickness(){return thickness;}
 }

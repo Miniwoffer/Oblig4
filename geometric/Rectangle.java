@@ -1,3 +1,5 @@
+package geometric;
+
 /* Rectangle abstract class
  * Ver 1.0
  */
