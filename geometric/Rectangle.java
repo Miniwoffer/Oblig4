@@ -36,7 +36,7 @@ abstract class Rectangle extends GeometricObject
 
     public String toString() {
         return " Density: " + super.density +
-            "\n Width:" + width +
-            "\n Height:" + height;
+            "\n Width: " + width +
+            "\n Height: " + height;
     }
 }
