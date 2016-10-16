@@ -10,17 +10,23 @@ import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 import java.util.EventListener;
 import javafx.event.EventHandler;
+import gui.*;
 
+/*  GUI
+ * Version: 1.0
+ */
 
-
-public class GUIv0 extends Application {
+public class GUI extends Application {
 
 	public Group root;
+    BoxDisplay myBoxDisplay;
 
 	@Override
-	public void start(Stage stage) {
+	public void start(Stage stage) { 
 		Sphere sphere = new Sphere(100); 
 		Sphere sphere2 = new Sphere(50);
+        
+        myBoxDisplay = new BoxDisplay();
 
 		root = new Group(sphere, sphere2);
 
@@ -31,7 +37,7 @@ public class GUIv0 extends Application {
 			}
 		});
 
-		Scene scene = new Scene(root, 600, 600);
+		Scene scene = new Scene(myBoxDisplay.getGroup(), 600, 600);
 		root.setTranslateX(300);
 		root.setTranslateY(300);
 
@@ -44,6 +50,7 @@ public class GUIv0 extends Application {
 
 		stage.setTitle("GUIv0");
 		stage.setScene(scene);
+        stage.setResizable(false);
 		stage.show();
 	}
 
