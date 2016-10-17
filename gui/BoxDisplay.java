@@ -39,6 +39,7 @@ public class BoxDisplay extends Display {
     Label widthLabel;
     Label heightLabel;
     Label lengthLabel;
+    Label thicknessLabel;
 
     public BoxDisplay()
     {
@@ -85,7 +86,7 @@ public class BoxDisplay extends Display {
         sliderLength.setShowTickLabels(true);
         sliderLength.setTranslateY(150);
 
-        Label thicknessLabel = new Label("Thickness");
+        thicknessLabel = new Label("Thickness");
         thicknessLabel.setTranslateY(180);
         thicknessLabel.setTranslateX(40);
         sliderThickness = new Slider(0,100,myBox.getThickness());
@@ -176,7 +177,8 @@ public class BoxDisplay extends Display {
 
         widthLabel.setText("Width: " + df.format(w));
         heightLabel.setText("Height: " + df.format(h));
-        lengthLabel.setText("Length: " + df.format(l));        
+        lengthLabel.setText("Length: " + df.format(l));      
+        thicknessLabel.setText("Thickness: " + df.format(t));  
         //Change myBox(GeometricObject) 
         myBox.setWidth(l);
         myBox.setHeight(w);

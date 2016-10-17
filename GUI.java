@@ -19,14 +19,14 @@ import gui.*;
 public class GUI extends Application {
 
 	public Group root;
-    BoxDisplay myBoxDisplay;
+    CylinderDisplay myBoxDisplay;
 
 	@Override
 	public void start(Stage stage) { 
 		Sphere sphere = new Sphere(100); 
 		Sphere sphere2 = new Sphere(50);
         
-        myBoxDisplay = new BoxDisplay();
+        myBoxDisplay = new CylinderDisplay();
 
 		root = new Group(sphere, sphere2);
 
@@ -53,14 +53,7 @@ public class GUI extends Application {
         stage.setResizable(false);
 		stage.show();
 	}
-
 	public static void main(String[] args) {
 		launch(args);
-	}
-}
-
-class Kkk implements EventListener {
-	public void onDragDetected(MouseEvent m) {
-		System.out.println(m.toString());
 	}
 }
