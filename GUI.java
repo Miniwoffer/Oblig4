@@ -64,7 +64,7 @@ public class GUI extends Application {
 
 
         scene = new Scene(root,600,600); 
-
+        updateDisplay("Box");
         stage.setScene(scene);
 		stage.setTitle("GUI");
         stage.setResizable(false);

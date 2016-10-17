@@ -57,8 +57,11 @@ public abstract class Display {
 	            oldY = newY;
 	            return;
 	        }
-	        shapeGroup.getTransforms().add(new Rotate(oldX-newX,0,0,0,new Point3D(0,10,0)));
-	        shapeGroup.getTransforms().add(new Rotate(oldY-newY,0,0,0,new Point3D(-10,0,0)));
+	        shapeGroup.getTransforms().add(new Rotate(newX-oldX,0,0,0,
+                        shapeGroup.sceneToLocal(300,0,0)));
+
+	        shapeGroup.getTransforms().add(new Rotate(oldY-newY,0,0,0,
+                        shapeGroup.sceneToLocal(new Point3D(0,300,0))));
 	                //shapeGroup.rx.setAngle(shapeGroup.rx.getAngle() - (oldX-newX));
 	                //shapeGroup.ry.setAngle(shapeGroup.ry.getAngle() - (oldY-newY));
             oldX = newX;
