@@ -12,17 +12,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 import java.util.EventListener;
 import javafx.event.EventHandler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 /* BoxDisplay
  * Version: 1.0
  */
 
-public class BoxDisplay{
+public class BoxDisplay extends Display {
     geometric.Box myBox;
-    Group myGroup;
-    Group shapeGroup;
-    Slider myWidth;
-    Slider myHeight;
-    Slider myLength;
+    Slider sliderWidth;
+    Slider sliderHeight;
+    Slider sliderLength;
     Slider myThickness;
 
     javafx.scene.shape.Box drawBox;
@@ -32,9 +33,16 @@ public class BoxDisplay{
     double oldY = 0;
     double newX = 0;
     double newY = 0;
+
+
     public BoxDisplay()
     {
+        //Init
+        super();
+
         myBox = new geometric.Box(100,100,100,10);
+
+        super.gob = myBox;
 
         PhongMaterial phong = new PhongMaterial(Color.color(1,0,0,0.5));
         drawBox = new javafx.scene.shape.Box(
@@ -53,18 +61,18 @@ public class BoxDisplay{
         //From 1 to 10 defualt myBox.value
         Label widthLabel = new Label("Width");
         widthLabel.setTranslateY(30);
-        myWidth = new Slider(1,200,myBox.getWidth());
-        myWidth.setTranslateY(40);
+        sliderWidth = new Slider(1,200,myBox.getWidth());
+        sliderWidth.setTranslateY(40);
 
         Label heightLabel = new Label("Height");
         heightLabel.setTranslateY(70);
-        myHeight = new Slider(1,200,myBox.getHeight());
-        myHeight.setTranslateY(80);
+        sliderHeight = new Slider(1,200,myBox.getHeight());
+        sliderHeight.setTranslateY(80);
 
         Label lengthLabel = new Label("Length");
         lengthLabel.setTranslateY(110);
-        myLength = new Slider(1,200,myBox.getLength());
-        myLength.setTranslateY(120);
+        sliderLength = new Slider(1,200,myBox.getLength());
+        sliderLength.setTranslateY(120);
 
         Label thicknessLabel = new Label("Thickness");
         thicknessLabel.setTranslateY(150);
@@ -74,56 +82,32 @@ public class BoxDisplay{
         shapeGroup = new Group(
                 drawBox,
                 innerBox);
+
         shapeGroup.setTranslateX(300);
         shapeGroup.setTranslateY(300);
 
-       shapeGroup.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-           public void handle(MouseEvent t)
-           {
-                oldX = t.getSceneX();
-                oldY = t.getSceneY();
-           }
-        });
-
-        shapeGroup.setOnMouseDragged(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent t) {
-                newX = t.getSceneX();
-                newY = t.getSceneY();
-                if(oldX == 0)
-                {
-                    oldX = newX;
-                    oldY = newY;
-                    return;
-                }
-                shapeGroup.getTransforms().add(new Rotate(oldX-newX,0,0,0,new Point3D(0,10,0)));
-                shapeGroup.getTransforms().add(new Rotate(oldY-newY,0,0,0,new Point3D(-10,0,0)));
-
-                //shapeGroup.rx.setAngle(shapeGroup.rx.getAngle() - (oldX-newX));
-                //shapeGroup.ry.setAngle(shapeGroup.ry.getAngle() - (oldY-newY));
-                oldX = newX;
-                oldY = newY;
-				
+        sliderWidth.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, 
+            Number old_val, Number new_val) {
+                //change(new_val);
+                drawBox.setWidth((double) new_val);
             }
-		});
-        myGroup = new Group(
+        });
+        //drawBox.setWidth(50).bind( sliderWidth.getValue());
+
+        super.bindRotation();
+
+        root = new Group(
                 shapeGroup,
-                myWidth,
+                sliderWidth,
                 widthLabel,
-                myHeight,
+                sliderHeight,
                 heightLabel,
-                myLength,
+                sliderLength,
                 lengthLabel,
                 myThickness,
-                thicknessLabel);
-    }
-    public Group getGroup()
-    {
-        return myGroup;
-    }
-    void updateThickness()
-    {
+                thicknessLabel,
+                super.methodLabels);
 
     }
 }

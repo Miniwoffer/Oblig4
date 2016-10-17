@@ -1,14 +1,16 @@
 package geometric;
+import java.text.DecimalFormat;
 
-abstract class GeometricObject {
+
+public abstract class GeometricObject {
 	//Variables
 	protected static double density = 7.8;
 	//Constructor
 	GeometricObject() {};
 	//Abstract methods
-	abstract double findArea();
-	abstract double findVolume();
-	abstract double findCircumference();
-	abstract double findSurfaceArea();
-	abstract double findWeight();
+	public abstract double findArea();
+	public abstract double findVolume();
+	public abstract double findCircumference();
+	public abstract double findSurfaceArea();
+	public abstract double findWeight();
 }
