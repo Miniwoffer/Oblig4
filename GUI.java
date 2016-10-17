@@ -24,10 +24,8 @@ public class GUI extends Application {
     static Stage stage;
     int selection = 1;
 
-    static Scene cylScene;
-    static Scene boxScene;
-    static Scene coneScene;
-    static Scene ballScene;
+    static Scene[] scenes = new Scene[4];
+
 	@Override
 	public void start(Stage primaryStage) { 
 
@@ -37,10 +35,8 @@ public class GUI extends Application {
         myBoxDisplay = new BoxDisplay();
         
 
-		//Scene scene = new Scene(myBoxDisplay.getGroup(), 600, 600);
-
-		cylScene = new Scene(myCylinderDisplay.getGroup(), 600, 600);
-		boxScene = new Scene(myBoxDisplay.getGroup(), 600, 600);
+        scenes[0] = new Scene(myBoxDisplay.getGroup(), 600, 600);
+		scenes[1] = new Scene(myCylinderDisplay.getGroup(), 600, 600);
 
 		stage.setTitle("GUI");
         stage.setResizable(false);
@@ -50,14 +46,14 @@ public class GUI extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	public static void changeDisplay(int t) {
-		//1 = box, 2 = cylinder
-		if(t == 1) {
-			stage.setScene(boxScene);
+	public static void changeDisplay(int s) {
+		//0 = box, 1 = cylinder, 2 = ball, 3 = cone
+		try {
+			stage.setScene( scenes[ s ] );
+			stage.show();
 		}
-		else  if( t == 2 ) {
-			stage.setScene(cylScene);
+		catch( Exception e ) {
+			System.out.println( e.getMessage() );
 		}
-		stage.show();
 	}
 }
