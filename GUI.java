@@ -11,49 +11,83 @@ import javafx.scene.input.MouseEvent;
 import java.util.EventListener;
 import javafx.event.EventHandler;
 import gui.*;
+import javafx.scene.control.ComboBox;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import javafx.scene.layout.Pane;
+import java.util.EventListener;
+import javafx.event.EventHandler;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+
 
 /*  GUI
  * Version: 1.0
  */
 
 public class GUI extends Application {
+    //Difrent displays
+    Group[] disps;
+    //CylinderDisplay myCylinderDisplay;
+    //BoxDisplay myBoxDisplay;
 
-	//public Group root;
-    CylinderDisplay myCylinderDisplay;
-    BoxDisplay myBoxDisplay;
-    static Stage stage;
-    int selection = 1;
 
-    static Scene[] scenes = new Scene[4];
+    //Root group
+    Pane root;
+    //Scene
+    Scene scene;
+    //Display selector
+    ComboBox dispSelector;
+    //disp list
+    static ObservableList<String> displays =
+        FXCollections.observableArrayList(
+                "Box",
+                "Cylinder",
+                "Ball",
+                "Cone"
+                );
 
-	@Override
-	public void start(Stage primaryStage) { 
+	public void start(Stage stage) { 
+        disps = new Group[2];
+        disps[0] = new BoxDisplay().getGroup();
+        disps[1] = new CylinderDisplay().getGroup();
+        dispSelector = new ComboBox<String>(displays);
+        dispSelector.setValue(displays.get(0));
+        root = new Pane();
+        root.getChildren().addAll(dispSelector);
 
-		stage = primaryStage;
+        dispSelector.valueProperty().addListener(new ChangeListener<String>() {
+            public void changed(ObservableValue<? extends String> ov, String old_val, String new_val) {
+                updateDisplay(new_val);
+            }});
 
-        myCylinderDisplay = new CylinderDisplay();
-        myBoxDisplay = new BoxDisplay();
-        
 
-        scenes[0] = new Scene(myBoxDisplay.getGroup(), 600, 600);
-		scenes[1] = new Scene(myCylinderDisplay.getGroup(), 600, 600);
+        scene = new Scene(root,600,600); 
 
+        stage.setScene(scene);
 		stage.setTitle("GUI");
         stage.setResizable(false);
-		//change scene -> shape
-		changeDisplay(1);
-	}
+        stage.show();
+    }
 	public static void main(String[] args) {
 		launch(args);
 	}
-	public static void changeDisplay(int s) {
-		//0 = box, 1 = cylinder, 2 = ball, 3 = cone
-		try {
-			stage.setScene( scenes[ s ] );
-			stage.show();
-		}
-		catch( Exception e ) {
-			System.out.println( e.getMessage() );
-		}
+	public void updateDisplay(String disp) {
+        Group dispGroup;
+        if(root.getChildren().size() > 1)
+            root.getChildren().remove(1,2);
+        switch(disp)
+        {
+            case "Box":
+                dispGroup = disps[0];
+            break;
+            case "Cylinder":
+                dispGroup = disps[1];
+            break;
+            default:
+                dispGroup = disps[0];
+            break;
+        }
+		root.getChildren().addAll(dispGroup);
 	}
 }

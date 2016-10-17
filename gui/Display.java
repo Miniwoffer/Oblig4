@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 
 
 
-abstract class Display {
+public abstract class Display {
 
 	protected Group shapeGroup;
 	protected Group methodLabels;
