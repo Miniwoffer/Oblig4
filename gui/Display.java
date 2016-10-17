@@ -26,7 +26,7 @@ abstract class Display {
 
 
 	Display() {
-
+		
 
 		//
 

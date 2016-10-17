@@ -18,42 +18,46 @@ import gui.*;
 
 public class GUI extends Application {
 
-	public Group root;
-    CylinderDisplay myBoxDisplay;
+	//public Group root;
+    CylinderDisplay myCylinderDisplay;
+    BoxDisplay myBoxDisplay;
+    static Stage stage;
+    int selection = 1;
 
+    static Scene cylScene;
+    static Scene boxScene;
+    static Scene coneScene;
+    static Scene ballScene;
 	@Override
-	public void start(Stage stage) { 
-		Sphere sphere = new Sphere(100); 
-		Sphere sphere2 = new Sphere(50);
+	public void start(Stage primaryStage) { 
+
+		stage = primaryStage;
+
+        myCylinderDisplay = new CylinderDisplay();
+        myBoxDisplay = new BoxDisplay();
         
-        myBoxDisplay = new CylinderDisplay();
 
-		root = new Group(sphere, sphere2);
+		//Scene scene = new Scene(myBoxDisplay.getGroup(), 600, 600);
 
-		root.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			@Override
-			public void handle(MouseEvent t) {
-				System.out.println("l");
-			}
-		});
+		cylScene = new Scene(myCylinderDisplay.getGroup(), 600, 600);
+		boxScene = new Scene(myBoxDisplay.getGroup(), 600, 600);
 
-		Scene scene = new Scene(myBoxDisplay.getGroup(), 600, 600);
-		root.setTranslateX(300);
-		root.setTranslateY(300);
-
-		PhongMaterial phong = new PhongMaterial(Color.color(1,0,0,0.5));
-		//sphere.setMaterial(phong);
-		PhongMaterial phong2 = new PhongMaterial(Color.color(0,1,0,0.8));
-		sphere2.setMaterial(phong2);
-
-
-
-		stage.setTitle("GUIv0");
-		stage.setScene(scene);
+		stage.setTitle("GUI");
         stage.setResizable(false);
-		stage.show();
+		//change scene -> shape
+		changeDisplay(1);
 	}
 	public static void main(String[] args) {
 		launch(args);
+	}
+	public static void changeDisplay(int t) {
+		//1 = box, 2 = cylinder
+		if(t == 1) {
+			stage.setScene(boxScene);
+		}
+		else  if( t == 2 ) {
+			stage.setScene(cylScene);
+		}
+		stage.show();
 	}
 }
