@@ -37,6 +37,12 @@ public class Cylinder extends Circle {
 		//Lager ikke input handler ettersom det skal brukes GUI;
 		this.thickness = t;
 	}
+	public double getLength() {
+		return this.length;
+	}
+	public void setLength( double l ) {
+		this.length = l;
+	}
 	//findVolume, findSurfaceAre, findWeight;
 	public double findVolume() {
 		return ( super.findArea() * this.length );
@@ -52,8 +58,8 @@ public class Cylinder extends Circle {
 	}
 	public String toString() {
 		return "Cylinder: \n" + super.toString() 
-		+ "\n Length: " + this.length 
-		+ "\n Thickness: " + this.thickness 
+		+ "\n Length: " + this.getLength() 
+		+ "\n Thickness: " + this.getThickness()
 		+ "\n TotVolume: " + this.findVolume()
 		+ "\n InnerVolume: " + this.findIVolume() 
 		+ "\n SurfaceArea: " + this.findSurfaceArea();
