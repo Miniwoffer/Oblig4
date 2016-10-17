@@ -19,7 +19,7 @@ $(BUILD)GUI.class: GUI.java $(BUILD)gui/*.class
 	javac GUI.java -d $(BUILD)
 
 $(BUILD)geometric/*.class: geometric/*.java
-	javac geometric/*.java -d $(BUILD)_
+	javac geometric/*.java -d $(BUILD)
 
 $(BUILD)gui/*.class: gui/*.java
 	javac gui/*.java -d  $(BUILD)

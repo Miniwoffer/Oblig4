@@ -51,7 +51,11 @@ public class Cylinder extends Circle {
 		return ( super.findArea() * 2 + super.findCircumference() * this.length );
 	}
 	public String toString() {
-		return "Cylinder: \n" + super.toString() + "\n Length: " + this.length + "\n Thickness: " + this.thickness + "\n TotVolume: " + this.findVolume()
-		+ "\n InnerVolume: " + this.findIVolume() + "\n SurfaceArea: " + this.findSurfaceArea();
+		return "Cylinder: \n" + super.toString() 
+		+ "\n Length: " + this.length 
+		+ "\n Thickness: " + this.thickness 
+		+ "\n TotVolume: " + this.findVolume()
+		+ "\n InnerVolume: " + this.findIVolume() 
+		+ "\n SurfaceArea: " + this.findSurfaceArea();
 	}
 }

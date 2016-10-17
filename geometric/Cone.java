@@ -41,6 +41,9 @@ public class Cone extends Circle {
 		return ( (1 / 3) * super.findArea() * this.length );
 	}
 	public double findIVolume() {
+		//Tavle:
+		
+
 		return ( super.findArea( this.thickness ) * (this.length - this.thickness * 2) );
 	}
 	public double findWeight() {
@@ -50,7 +53,11 @@ public class Cone extends Circle {
 		return ( super.findArea() * 2 + super.findCircumference() * this.length );
 	}
 	public String toString() {
-		return "Cone: \n" + super.toString() + "\n Length: " + this.length + "\n Thickness: " + this.thickness + "\n TotVolume: " + this.findVolume()
-		+ "\n InnerVolume: " + this.findIVolume() + "\n SurfaceArea: " + this.findSurfaceArea();
+		return "Cone: \n" + super.toString() 
+		+ "\n Length: " + this.length  
+		+ "\n Thickness: " + this.thickness 
+		+ "\n TotVolume: " + this.findVolume()
+		+ "\n InnerVolume: " + this.findIVolume() 
+		+ "\n SurfaceArea: " + this.findSurfaceArea();
 	}
 }
