@@ -14,6 +14,8 @@ import java.util.EventListener;
 import javafx.event.EventHandler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import java.text.DecimalFormat;
+
 
 /* BoxDisplay
  * Version: 1.0
@@ -24,7 +26,7 @@ public class BoxDisplay extends Display {
     Slider sliderWidth;
     Slider sliderHeight;
     Slider sliderLength;
-    Slider myThickness;
+    Slider sliderThickness;
 
     javafx.scene.shape.Box drawBox;
     javafx.scene.shape.Box innerBox;
@@ -34,6 +36,9 @@ public class BoxDisplay extends Display {
     double newX = 0;
     double newY = 0;
 
+    Label widthLabel;
+    Label heightLabel;
+    Label lengthLabel;
 
     public BoxDisplay()
     {
@@ -59,25 +64,33 @@ public class BoxDisplay extends Display {
         innerBox.setMaterial(phong);
 
         //From 1 to 10 defualt myBox.value
-        Label widthLabel = new Label("Width");
+        widthLabel = new Label("Width");
         widthLabel.setTranslateY(30);
-        sliderWidth = new Slider(1,200,myBox.getWidth());
-        sliderWidth.setTranslateY(40);
+        widthLabel.setTranslateX(30);
+        sliderWidth = new Slider(0,200,myBox.getWidth());
+        sliderWidth.setShowTickLabels(true);
+        sliderWidth.setTranslateY(50);
 
-        Label heightLabel = new Label("Height");
-        heightLabel.setTranslateY(70);
-        sliderHeight = new Slider(1,200,myBox.getHeight());
-        sliderHeight.setTranslateY(80);
+        heightLabel = new Label("Height");
+        heightLabel.setTranslateY(80);
+        heightLabel.setTranslateX(40);
+        sliderHeight = new Slider(0,200,myBox.getHeight());
+        sliderHeight.setShowTickLabels(true);
+        sliderHeight.setTranslateY(100);
 
-        Label lengthLabel = new Label("Length");
-        lengthLabel.setTranslateY(110);
-        sliderLength = new Slider(1,200,myBox.getLength());
-        sliderLength.setTranslateY(120);
+        lengthLabel = new Label("Length");
+        lengthLabel.setTranslateY(130);
+        lengthLabel.setTranslateX(40);
+        sliderLength = new Slider(0,200,myBox.getLength());
+        sliderLength.setShowTickLabels(true);
+        sliderLength.setTranslateY(150);
 
         Label thicknessLabel = new Label("Thickness");
-        thicknessLabel.setTranslateY(150);
-        myThickness = new Slider(1,200,myBox.getThickness());
-        myThickness.setTranslateY(160);
+        thicknessLabel.setTranslateY(180);
+        thicknessLabel.setTranslateX(40);
+        sliderThickness = new Slider(0,100,myBox.getThickness());
+        sliderThickness.setShowTickLabels(true);
+        sliderThickness.setTranslateY(200);
 
         shapeGroup = new Group(
                 drawBox,
@@ -90,7 +103,28 @@ public class BoxDisplay extends Display {
             public void changed(ObservableValue<? extends Number> ov, 
             Number old_val, Number new_val) {
                 //change(new_val);
-                drawBox.setWidth((double) new_val);
+                updateAll();
+            }
+        });
+        sliderHeight.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, 
+            Number old_val, Number new_val) {
+                //change(new_val);
+                updateAll();
+            }
+        });
+        sliderLength.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, 
+            Number old_val, Number new_val) {
+                //change(new_val);
+                updateAll();
+            }
+        });
+        sliderThickness.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, 
+            Number old_val, Number new_val) {
+                //change(new_val);
+                updateAll();
             }
         });
         //drawBox.setWidth(50).bind( sliderWidth.getValue());
@@ -105,9 +139,64 @@ public class BoxDisplay extends Display {
                 heightLabel,
                 sliderLength,
                 lengthLabel,
-                myThickness,
+                sliderThickness,
                 thicknessLabel,
                 super.methodLabels);
 
+    }
+    public void updateAll() {
+        DecimalFormat df = new DecimalFormat("#.00");
+
+        PhongMaterial phong = new PhongMaterial(Color.rgb(255,0,0,0.5));
+        double l, w, h, t;
+        w =  sliderWidth.getValue();
+        h = sliderHeight.getValue();
+        l = sliderLength.getValue();
+
+
+        double smallest;
+        if( l < h) {
+            if( w < l) {
+                smallest = w;
+            }
+            else {
+                smallest = l;
+            }
+        }
+        else if(h < w) {
+            smallest = h;
+        }
+        else {
+            smallest = w;
+        }
+
+        sliderThickness.setMax( smallest / 2 );
+
+        t = sliderThickness.getValue();
+
+        widthLabel.setText("Width: " + df.format(w));
+        heightLabel.setText("Height: " + df.format(h));
+        lengthLabel.setText("Length: " + df.format(l));        
+        //Change myBox(GeometricObject) 
+        myBox.setWidth(l);
+        myBox.setHeight(w);
+        myBox.setLength(h);
+        myBox.setThickness(t);
+
+        //Change outer 3D box
+        drawBox.setWidth(w);
+        drawBox.setDepth(l);
+        drawBox.setHeight(h);
+
+        //Change inner 3D box
+        innerBox.setWidth(w - t*2);
+        innerBox.setDepth(l - t*2);
+        innerBox.setHeight(h - t*2);
+
+        //reset Material to force re-draw
+        drawBox.setMaterial(phong);
+
+        super.updateAll();
+        
     }
 }

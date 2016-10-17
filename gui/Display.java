@@ -65,7 +65,8 @@ abstract class Display {
 			oldY = newY;
 	        }
 		});
-		volumeLabel = new Label("Volume");
+		//Output labels
+		volumeLabel = new Label("Volume: " + gob.findVolume());
         volumeLabel.setTranslateX(300);
 
 		surfaceAreaLabel = new Label("Surface Area");
@@ -78,8 +79,16 @@ abstract class Display {
         weightLabel.setText("Weight: " + gob.findWeight());
 
         methodLabels = new Group(volumeLabel, surfaceAreaLabel, weightLabel);
+
+        //color sliders om vi har ekstra tid;
 	}
 	public Group getGroup() {
 		return this.root;
-	} 
+	}
+	public void updateAll() {
+		volumeLabel.setText("Volume: \t\t" + (int)gob.findVolume() + "\t dm^3");
+		surfaceAreaLabel.setText("Surface Area:\t" + (int)gob.findSurfaceArea() + "\t dm^2");
+        weightLabel.setText("Weight: \t\t" + (int)gob.findWeight() + "\t Kg");
+	}
+
 }
