@@ -31,7 +31,7 @@ public class Debug {
 		for(String func : funcs) {
 			for(String dec : declared) {
 				String t = dec.substring(dec.lastIndexOf(".") + 1, dec.indexOf("("));
-				System.out.printf("declared: %-20s function: %-15s Matches: %-15s\n" , t, func, func.equals(t));
+				//System.out.printf("declared: %-20s function: %-15s Matches: %-15s\n" , t, func, func.equals(t));
 				if(func.equals(t)) {
 					try {
 						System.out.println(func + ": " + obj.getClass().getDeclaredMethod(func).invoke(obj));

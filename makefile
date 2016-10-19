@@ -16,7 +16,7 @@ run_oblig: oblig
 	cd build/; java Oblig4
 
 $(BUILD)Oblig4.class: $(BUILD)geometric/*.class Oblig4.java
-	javac Oblig4.java -d $(BUILD)
+	javac Oblig4.java Debug.java -d $(BUILD)
 
 $(BUILD)GUI.class: GUI.java $(BUILD)gui/*.class
 	javac GUI.java -d $(BUILD)
