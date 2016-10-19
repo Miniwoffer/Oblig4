@@ -33,7 +33,7 @@ public class Cone extends MeshView {
 	protected void setPoints() {
 		points[0] = 0;
 		points[1] = 0;
-		points[2] = (float)-this.height;
+		points[2] = (float)this.height;
 		points[3] = 0;
 		points[4] = 0;
 		points[5] = 0;
@@ -41,10 +41,10 @@ public class Cone extends MeshView {
 		int d = 6;
 		for(int i=0; i < 20; i++) {
 			//x
-			points[d] = ( float ) Math.cos( i * this.change ) * (float) this.radius;
+			points[d] = ( float ) Math.cos( i * this.change ) * (float) this.radius*2;
 			d++;
 			//y
-			points[d] = ( float ) Math.sin( i * this.change ) * (float) this.radius;
+			points[d] = ( float ) Math.sin( i * this.change ) * (float) this.radius*2;
 			d++;
 			//z
 			points[d] = 0;
@@ -54,7 +54,7 @@ public class Cone extends MeshView {
 	}
 	protected void setFaces() {
 		int d = 0;
-		for( int i=0; i < 21; i++) {
+		for( int i = 1; i < 21; i++) {
 			if(i == 20) {
 				faces[d] = 0; d++; 	//top
 				faces[d] = 0; d++;	//tex
@@ -64,22 +64,23 @@ public class Cone extends MeshView {
 				
 				faces[d] = 2; d++;
 				faces[d] = 0; d++;
-				break;
 			}
-			faces[d] = 0;
-			d++;
-			faces[d] = 0;
-			d++;
-			faces[d] = i+1;
-			d++;
-			faces[d] = 0;
-			d++;
-			faces[d] = i+2;
-			d++;
-			faces[d] = 0;
-			d++;
+            else{
+			    faces[d] = 0;
+			    d++;
+			    faces[d] = 0;
+			    d++;
+			    faces[d] = i+1;
+			    d++;
+			    faces[d] = 0;
+			    d++;
+			    faces[d] = i+2;
+			    d++;
+			    faces[d] = 0;
+			    d++;
+            }
 		}
-		for(int i = 0; i < 21; i++) {
+		for(int i = 1; i < 21; i++) {
 			if(i == 20) {
 				faces[d] = 1; d++; 	//top
 				faces[d] = 0; d++;	//tex
@@ -89,20 +90,18 @@ public class Cone extends MeshView {
 				
 				faces[d] = 21; d++;
 				faces[d] = 0; d++;
-				break;
 			}
-			faces[d] = 1;
-			d++;
-			faces[d] = 0;
-			d++;
-			faces[d] = i+2;
-			d++;
-			faces[d] = 0;
-			d++;
-			faces[d] = i+1;
-			d++;
-			faces[d] = 0;
-			d++;
+            else
+            {
+			    faces[d] = 1;d++;
+			    faces[d] = 0;d++;
+
+			    faces[d] = i+2;d++;
+			    faces[d] = 0;d++;
+
+			    faces[d] = i+1;d++;
+			    faces[d] = 0;d++;
+            }
 		}
 		this.triMesh.getFaces().addAll(this.faces);
 	}

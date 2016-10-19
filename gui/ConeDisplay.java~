@@ -32,7 +32,6 @@ public class ConeDisplay extends Display {
 
     shape.Cone drawCone;
     shape.Cone innerCone;
-    Group innerGroup;
 
     Label radiusLabel;
     Label thicknessLabel;
@@ -76,13 +75,11 @@ public class ConeDisplay extends Display {
         sliderHeight = new Slider(0,200,myCone.getLength());
         sliderHeight.setShowTickLabels(true);
         sliderHeight.setTranslateY(150);
-        
-        innerGroup = new Group(
-                innerCone.mesh);
+
 
         shapeGroup = new Group(
                 drawCone.mesh,
-                innerGroup);
+                innerCone.mesh);
 
         shapeGroup.setTranslateX(300);
         shapeGroup.setTranslateY(300);
@@ -150,18 +147,15 @@ public class ConeDisplay extends Display {
         drawCone.setHeight(h); 
 
         //Change inner 3D box
-        double b = t*r/h;
-        double nh = h - t - b;
-        double nr = r-t;
-        double th = Math.sqrt(Math.pow(h/r*t,2) + Math.pow(t,2));
+        double th = Math.sqrt(Math.pow(t*h/r,2) + Math.pow(t,2));
         double lh = h - t - th;
-        innerCone.setRadius(r-t);
-        innerCone.setHeight(nh);
-        innerGroup.setTranslateZ(b);
+        innerCone.setRadius(lh*r/h);
+        innerCone.setHeight(lh);
+        innerCone.setTranslateY(th);
+        drawCone.setTranslateX(100);
 
         //reset Material to force re-draw
         drawCone.setMaterial(phong);
-        innerCone.setMaterial(phong);
 
         super.updateAll();
         
