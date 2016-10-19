@@ -55,7 +55,6 @@ public class Cone extends MeshView {
 	protected void setFaces() {
 		int d = 0;
 		for( int i=0; i < 21; i++) {
-			System.out.println(d);
 			if(i == 20) {
 				faces[d] = 0; d++; 	//top
 				faces[d] = 0; d++;	//tex
@@ -81,7 +80,6 @@ public class Cone extends MeshView {
 			d++;
 		}
 		for(int i = 0; i < 21; i++) {
-			System.out.println(d);
 			if(i == 20) {
 				faces[d] = 1; d++; 	//top
 				faces[d] = 0; d++;	//tex
