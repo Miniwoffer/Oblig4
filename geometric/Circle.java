@@ -1,3 +1,4 @@
+
 package geometric;
 
 public abstract class Circle extends GeometricObject {
@@ -5,11 +6,11 @@ public abstract class Circle extends GeometricObject {
 	protected double radius;
 	//Constructors:
 	//Default
-	Circle() {
+	public Circle() {
 		this.radius = 1.0;
 	}
 	//Defined Radius
-	Circle( double r ) {
+	public Circle( double r ) {
 		this.radius = r;
 	}
 	//get + set

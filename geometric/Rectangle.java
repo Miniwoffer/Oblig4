@@ -1,16 +1,13 @@
+//Barebone 3D objects based on a Rectangle
 package geometric;
-
-/* Rectangle abstract class
- * Ver 1.0
- */
 
 abstract class Rectangle extends GeometricObject
 {
     protected double width;
     protected double height;
-    
-    Rectangle(){this(5,5);}
-    Rectangle(double w, double h)
+    //Constructors
+    public Rectangle(){this(5,5);}
+    public Rectangle(double w, double h)
     {
         width = w;
         height = h;
@@ -29,7 +26,6 @@ abstract class Rectangle extends GeometricObject
     //returns the area of the Rectangle
     public double findArea(){return width*height;}
 
-    
     //returns the circumfirance of the Rectangle by multiplying the biggest of 
     //height and width with 2*PI
     public double findCircumference(){return 2*(width+height);}

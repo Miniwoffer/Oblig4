@@ -1,7 +1,5 @@
 package gui;
 
-/* import geometric.Box;
-import javafx.scene.shape.Box;*/
 import javafx.scene.transform.Rotate;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
@@ -103,32 +101,27 @@ public class BoxDisplay extends Display {
         sliderWidth.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, 
             Number old_val, Number new_val) {
-                //change(new_val);
                 updateAll();
             }
         });
         sliderHeight.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, 
             Number old_val, Number new_val) {
-                //change(new_val);
                 updateAll();
             }
         });
         sliderLength.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, 
             Number old_val, Number new_val) {
-                //change(new_val);
                 updateAll();
             }
         });
         sliderThickness.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov, 
             Number old_val, Number new_val) {
-                //change(new_val);
                 updateAll();
             }
         });
-        //drawBox.setWidth(50).bind( sliderWidth.getValue());
 
         super.bindRotation();
 

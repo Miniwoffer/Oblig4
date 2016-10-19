@@ -25,14 +25,7 @@ public abstract class Display {
 	protected geometric.GeometricObject gob;
 
 
-	Display() {
-		
-
-		//
-
-		
-
-	}
+	public Display() {}
 
 	protected void bindRotation() {
 		shapeGroup.setOnMouseClicked(new EventHandler<MouseEvent>() 
