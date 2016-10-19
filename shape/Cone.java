@@ -1,3 +1,4 @@
+package shape;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.shape.MeshView;
 
@@ -11,10 +12,10 @@ public class Cone extends MeshView {
 	private int[] faces = new int[252];
 
 	TriangleMesh triMesh = new TriangleMesh();
+	public MeshView mesh;
 
-	Cone(double r, double h) {
+	public Cone(double r, double h) {
 		super();
-		//System.out.println("Something:" + this.toString()); //// runtime error, ClassNotFound;
 		this.radius = r;
 		this.height = h;
 		this.draw();
@@ -27,6 +28,7 @@ public class Cone extends MeshView {
 		this.triMesh.getTexCoords().addAll(0,0);
 		this.setPoints();
 		this.setFaces();
+		this.mesh = new MeshView(this.triMesh);
 	}
 	protected void setPoints() {
 		points[0] = 0;

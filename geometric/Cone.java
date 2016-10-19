@@ -24,7 +24,18 @@ public class Cone extends Circle {
 		this.length = l;
 		this.thickness = t;
 	}
-
+	public void setRadius( double r ) {
+		this.radius = r;
+	}
+	public double getRadius() {
+		return this.radius;
+	}
+	public void setLength( double l ) {
+		this.length = l;
+	}
+	public double getLength() {
+		return this.length;
+	}
 
 
 

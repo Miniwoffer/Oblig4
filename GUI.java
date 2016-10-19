@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import java.util.EventListener;
 import javafx.event.EventHandler;
 import gui.*;
+import shape.*;
 import javafx.scene.control.ComboBox;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
@@ -48,10 +49,11 @@ public class GUI extends Application {
                 );
 
 	public void start(Stage stage) { 
-        disps = new Group[3];
+        disps = new Group[4];
         disps[0] = new BoxDisplay().getGroup();
         disps[1] = new CylinderDisplay().getGroup();
         disps[2] = new BallDisplay().getGroup();
+        disps[3] = new ConeDisplay().getGroup();
         dispSelector = new ComboBox<String>(displays);
         dispSelector.setValue(displays.get(0));
         root = new Pane();
@@ -72,7 +74,7 @@ public class GUI extends Application {
     }
 	public static void main(String[] args) {
 		launch(args);
-		Cone cone = new Cone(200, 200);
+		//Cone cone = new Cone(200, 200);
 	}
 	public void updateDisplay(String disp) {
         Group dispGroup;
@@ -88,6 +90,9 @@ public class GUI extends Application {
             break;
             case "Ball":
                 dispGroup = disps[2];
+            break;
+            case "Cone":
+                dispGroup = disps[3];
             break;
             default:
                 dispGroup = disps[0];
