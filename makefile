@@ -2,6 +2,9 @@ BUILD=build/
 
 All: build_dir $(BUILD)Oblig4.class $(BUILD)GUI.class
 
+jar: gui
+	cd $(BUILD); jar cfe Oblig4.jar GUI *.class shape/*.class geometric/*.class gui/*.class
+
 oblig: build_dir $(BUILD)Oblig4.class
 
 gui: build_dir $(BUILD)GUI.class
