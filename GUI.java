@@ -72,6 +72,7 @@ public class GUI extends Application {
     }
 	public static void main(String[] args) {
 		launch(args);
+		Cone cone = new Cone(200, 200);
 	}
 	public void updateDisplay(String disp) {
         Group dispGroup;
