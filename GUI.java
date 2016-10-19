@@ -45,15 +45,17 @@ public class GUI extends Application {
                 "Box",
                 "Cylinder",
                 "Ball",
-                "Cone"
+                "Cone",
+                "UML"
                 );
 
 	public void start(Stage stage) { 
-        disps = new Group[4];
+        disps = new Group[5];
         disps[0] = new BoxDisplay().getGroup();
         disps[1] = new CylinderDisplay().getGroup();
         disps[2] = new BallDisplay().getGroup();
         disps[3] = new ConeDisplay().getGroup();
+        disps[4] = new UMLDisplay().getGroup();
         dispSelector = new ComboBox<String>(displays);
         dispSelector.setValue(displays.get(0));
         root = new Pane();
@@ -93,6 +95,9 @@ public class GUI extends Application {
             break;
             case "Cone":
                 dispGroup = disps[3];
+            break;
+            case "UML":
+                dispGroup = disps[4];
             break;
             default:
                 dispGroup = disps[0];
