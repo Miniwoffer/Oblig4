@@ -41,10 +41,10 @@ public class Cone extends MeshView {
 		int d = 6;
 		for(int i=0; i < 20; i++) {
 			//x
-			points[d] = ( float ) Math.cos( i * this.change ) * (float) this.radius*2;
+			points[d] = ( float ) Math.cos( i * this.change ) * (float) this.radius;
 			d++;
 			//y
-			points[d] = ( float ) Math.sin( i * this.change ) * (float) this.radius*2;
+			points[d] = ( float ) Math.sin( i * this.change ) * (float) this.radius;
 			d++;
 			//z
 			points[d] = 0;
