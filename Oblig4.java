@@ -5,22 +5,18 @@ public class Oblig4 {
 		Debug.status = true;
 		//test object
 		Cylinder c = new Cylinder(2, 2, 0.5);
-		log(c.toString());
-
 		Cone cone = new Cone(2, 2, 0.5);
-		log(cone.toString());
-
 		Ball ball = new Ball(2, 0.5);
-        log(ball.toString());
-
         Box box = new Box(5,5,5,2);
-        log(box.toString());
 
-		String[] functions = {"findArea", "findVolume"};
+		String[] functions = {"toString"};
+		Object[] obs = {c, cone, ball, box};
 
-		Debug.runArr(functions, cone);
+		for(Object o : obs) {
+			Debug.runArr(functions, o);	
+		}
+		
 
-		//cone.getClass().getDeclaredMethod("findVolume").invoke(cone);
 	}
 
 	public static void log(String msg) {

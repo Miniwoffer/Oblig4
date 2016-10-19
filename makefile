@@ -2,6 +2,9 @@ BUILD=build/
 
 All: build_dir $(BUILD)Oblig4.class $(BUILD)GUI.class
 
+jar: gui
+	cd $(BUILD); jar cfe GUI.jar GUI *.class shape/*.class geometric/*.class gui/*.class
+
 oblig: build_dir $(BUILD)Oblig4.class
 
 gui: build_dir $(BUILD)GUI.class
@@ -13,7 +16,7 @@ run_oblig: oblig
 	cd build/; java Oblig4
 
 $(BUILD)Oblig4.class: $(BUILD)geometric/*.class Oblig4.java
-	javac Oblig4.java -d $(BUILD)
+	javac Oblig4.java Debug.java -d $(BUILD)
 
 $(BUILD)GUI.class: GUI.java $(BUILD)gui/*.class
 	javac GUI.java -d $(BUILD)
