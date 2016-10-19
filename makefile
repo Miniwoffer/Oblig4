@@ -21,8 +21,11 @@ $(BUILD)GUI.class: GUI.java $(BUILD)gui/*.class
 $(BUILD)geometric/*.class: geometric/*.java
 	javac geometric/*.java -d $(BUILD)
 
-$(BUILD)gui/*.class: gui/*.java
+$(BUILD)gui/*.class: gui/*.java $(BUILD)geometric/*.class $(BUILD)shape/*.class
 	javac gui/*.java -d  $(BUILD)
+
+$(BUILD)shape/*.class: shape/*.java
+	javac shape/*.java -d $(BUILD)
 
 #cleans the build directory
 build_dir:

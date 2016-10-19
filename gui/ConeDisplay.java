@@ -24,14 +24,19 @@ import java.text.DecimalFormat;
 
 public class ConeDisplay extends Display {
     geometric.Cone myCone;
+
     Slider sliderRadius;
     Slider sliderThickness;
+    Slider sliderHeight;
+
 
     shape.Cone drawCone;
     shape.Cone innerCone;
 
     Label radiusLabel;
     Label thicknessLabel;
+    Label heightLabel;
+    
 
     public ConeDisplay()
     {
@@ -64,6 +69,14 @@ public class ConeDisplay extends Display {
         sliderThickness.setShowTickLabels(true);
         sliderThickness.setTranslateY(100);
 
+        heightLabel = new Label("Height");
+        heightLabel.setTranslateY(130);
+        heightLabel.setTranslateX(40);
+        sliderHeight = new Slider(0,200,myCone.getLength());
+        sliderHeight.setShowTickLabels(true);
+        sliderHeight.setTranslateY(150);
+
+
         shapeGroup = new Group(
                 drawCone.mesh,
                 innerCone.mesh);
@@ -85,6 +98,14 @@ public class ConeDisplay extends Display {
                 updateAll();
             }
         });
+        sliderHeight.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov, 
+            Number old_val, Number new_val) {
+                //change(new_val);
+                updateAll();
+            }
+        });
+
         //drawBox.setWidth(50).bind( sliderWidth.getValue());
 
         super.bindRotation();
@@ -95,6 +116,8 @@ public class ConeDisplay extends Display {
                 radiusLabel,
                 sliderThickness,
                 thicknessLabel,
+                heightLabel,
+                sliderHeight,
                 super.methodLabels);
 
     }
@@ -102,8 +125,10 @@ public class ConeDisplay extends Display {
         DecimalFormat df = new DecimalFormat("#.00");
 
         PhongMaterial phong = new PhongMaterial(Color.rgb(255,0,0,0.5));
-        double r,t;
+        double r,t,h;
         r =  sliderRadius.getValue();
+
+        h = sliderHeight.getValue();
 
         sliderThickness.setMax(r);
 
@@ -111,14 +136,21 @@ public class ConeDisplay extends Display {
 
         radiusLabel.setText("Radius: " + df.format(r));    
         thicknessLabel.setText("Thickness: " + df.format(t));  
-        //Change myBox(GeometricObject) 
+        //Change myBox(GeometricObject)
+        myCone.setLength(h); 
         myCone.setRadius(r);
         myCone.setThickness(t);
 
         //Change outer 3D box
         drawCone.setRadius(r);
+        drawCone.setHeight(h); 
+
         //Change inner 3D box
-        innerCone.setRadius(r - t);
+        double ll =t*Math.sqrt(4*Math.pow(h/(r*2),2) + 1);
+        innerCone.setRadius(ll*r/h);
+        innerCone.setHeight(h - ll - t);
+        innerCone.setTranslateZ(ll+t);
+
         //reset Material to force re-draw
         drawCone.setMaterial(phong);
 
