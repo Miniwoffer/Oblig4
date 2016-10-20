@@ -11,6 +11,7 @@ public class Cone extends MeshView {
 	private float[] points = new float[66];
 	private int[] faces = new int[252];
 
+	//new trimesh for mesh defining
 	TriangleMesh triMesh = new TriangleMesh();
 	public MeshView mesh;
 
@@ -22,15 +23,19 @@ public class Cone extends MeshView {
 	}
 
 	public void draw() {
+		//reset mesh (clear)
 		this.triMesh.getTexCoords().clear();
 		this.triMesh.getPoints().clear();
 		this.triMesh.getFaces().clear();
+		//set new tex, points and faces to mesh;
 		this.triMesh.getTexCoords().addAll(0,0);
 		this.setPoints();
 		this.setFaces();
+		//set mesh to MeshVeiw of trimesh for usage in Group.
 		this.mesh = new MeshView(this.triMesh);
 	}
 	protected void setPoints() {
+		//set top and bottom-center point
 		points[0] = 0;
 		points[1] = 0;
 		points[2] = (float)this.height;
@@ -38,69 +43,71 @@ public class Cone extends MeshView {
 		points[4] = 0;
 		points[5] = 0;
 		//points 0-2 = top point, 3-5 = bottom center;
-		int d = 6;
-		for(int i=0; i < 20; i++) {
+		int pointsIndex = 6;
+		//Set points
+		for( int i = 0; i < 20; i++ ) {
 			//x
-			points[d] = ( float ) Math.cos( i * this.change ) * (float) this.radius;
-			d++;
+			points[pointsIndex] = ( float ) Math.cos( i * this.change ) * (float) this.radius;
+			pointsIndex++;
 			//y
-			points[d] = ( float ) Math.sin( i * this.change ) * (float) this.radius;
-			d++;
+			points[pointsIndex] = ( float ) Math.sin( i * this.change ) * (float) this.radius;
+			pointsIndex++;
 			//z
-			points[d] = 0;
-			d++;
+			points[pointsIndex] = 0;
+			pointsIndex++;
 		}
+		//add points to trimesh.
 		this.triMesh.getPoints().addAll(this.points);
 	}
 	protected void setFaces() {
-		int d = 0;
+		int facesIndex = 0;
 		for( int i = 1; i < 21; i++) {
 			if(i == 20) {
-				faces[d] = 0; d++; 	//top
-				faces[d] = 0; d++;	//tex
+				faces[facesIndex] = 0; facesIndex++; 	//top
+				faces[facesIndex] = 0; facesIndex++;	//tex
 
-				faces[d] = 21; d++;
-				faces[d] = 0; d++;
+				faces[facesIndex] = 21; facesIndex++;
+				faces[facesIndex] = 0;  facesIndex++;
 				
-				faces[d] = 2; d++;
-				faces[d] = 0; d++;
+				faces[facesIndex] = 2; facesIndex++;
+				faces[facesIndex] = 0; facesIndex++;
 			}
             else{
-			    faces[d] = 0;
-			    d++;
-			    faces[d] = 0;
-			    d++;
-			    faces[d] = i+1;
-			    d++;
-			    faces[d] = 0;
-			    d++;
-			    faces[d] = i+2;
-			    d++;
-			    faces[d] = 0;
-			    d++;
+			    faces[facesIndex] = 0;
+			    facesIndex++;
+			    faces[facesIndex] = 0;
+			    facesIndex++;
+			    faces[facesIndex] = i+1;
+			    facesIndex++;
+			    faces[facesIndex] = 0;
+			    facesIndex++;
+			    faces[facesIndex] = i+2;
+			    facesIndex++;
+			    faces[facesIndex] = 0;
+			    facesIndex++;
             }
 		}
 		for(int i = 1; i < 21; i++) {
 			if(i == 20) {
-				faces[d] = 1; d++; 	//top
-				faces[d] = 0; d++;	//tex
+				faces[facesIndex] = 1; facesIndex++; 	//bottom
+				faces[facesIndex] = 0; facesIndex++;	//tex
 
-				faces[d] = 2; d++;
-				faces[d] = 0; d++;
+				faces[facesIndex] = 2; facesIndex++;
+				faces[facesIndex] = 0; facesIndex++;
 				
-				faces[d] = 21; d++;
-				faces[d] = 0; d++;
+				faces[facesIndex] = 21; facesIndex++;
+				faces[facesIndex] = 0;  facesIndex++;
 			}
             else
             {
-			    faces[d] = 1;d++;
-			    faces[d] = 0;d++;
+			    faces[facesIndex] = 1; facesIndex++;
+			    faces[facesIndex] = 0; facesIndex++;
 
-			    faces[d] = i+2;d++;
-			    faces[d] = 0;d++;
+			    faces[facesIndex] = i+2; facesIndex++;
+			    faces[facesIndex] = 0;   facesIndex++;
 
-			    faces[d] = i+1;d++;
-			    faces[d] = 0;d++;
+			    faces[facesIndex] = i+1; facesIndex++;
+			    faces[facesIndex] = 0;   facesIndex++;
             }
 		}
 		this.triMesh.getFaces().addAll(this.faces);

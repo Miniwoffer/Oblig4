@@ -8,20 +8,22 @@ public class Box extends Rectangle
 {
     private double length;
     private double thickness;
-    public Box(){this(5,5,5,2);}
+    public Box()
+    {
+        this(5,5,5,2);
+    }
     public Box(double w, double h, double l, double t)
     {
         super(w,h);
         length = l;
         thickness = t;
     }
-    public void setLength(double l){length = l > 0 ? l : l * -1;}
+    public void setLength(double l)
+    {
+        length = l;
+    }
     public void setThickness(double t)
     {
-        if(t < 0)
-            t *= -1;
-        if(t >= length/2 || t >= width/2 || t >= height/2)
-            t = 0;
         thickness = t;
     } 
     public double getLength(){return length;}
