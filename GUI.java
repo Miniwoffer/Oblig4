@@ -2,16 +2,12 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
-import javafx.scene.shape.Sphere;
-import javafx.scene.paint.PhongMaterial;
-import javafx.scene.AmbientLight;
 import javafx.scene.PointLight;
 import javafx.scene.paint.Color;
 import javafx.scene.input.MouseEvent;
 import java.util.EventListener;
 import javafx.event.EventHandler;
 import gui.*;
-import shape.*;
 import javafx.scene.control.ComboBox;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
@@ -26,22 +22,25 @@ import javafx.beans.value.ObservableValue;
  * Version: 1.0
  */
 
-public class GUI extends Application {
+public class GUI extends Application 
+{
     //Difrent displays
     Group[] disps;
     //CylinderDisplay myCylinderDisplay;
     //BoxDisplay myBoxDisplay;
 
-
+    PointLight pointLight;
     //Root group
     Pane root;
     //Scene
     Scene scene;
-    //Display selector
+
+    //Dropdown menu
     ComboBox dispSelector;
-    //disp list
+
+    //Dropdown Options
     static ObservableList<String> displays =
-        FXCollections.observableArrayList(
+        FXCollections.observableArrayList (
                 "Box",
                 "Cylinder",
                 "Ball",
@@ -49,7 +48,8 @@ public class GUI extends Application {
                 "UML"
                 );
 
-	public void start(Stage stage) { 
+	public void start(Stage stage) 
+    { 
         disps = new Group[5];
         disps[0] = new BoxDisplay().getGroup();
         disps[1] = new CylinderDisplay().getGroup();
@@ -59,6 +59,7 @@ public class GUI extends Application {
         dispSelector = new ComboBox<String>(displays);
         dispSelector.setValue(displays.get(0));
         root = new Pane();
+
         root.getChildren().addAll(dispSelector);
 
         dispSelector.valueProperty().addListener(new ChangeListener<String>() {
@@ -74,11 +75,12 @@ public class GUI extends Application {
         stage.setResizable(false);
         stage.show();
     }
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+    {
 		launch(args);
-		//Cone cone = new Cone(200, 200);
 	}
-	public void updateDisplay(String disp) {
+	public void updateDisplay(String disp) 
+    {
         Group dispGroup;
         if(root.getChildren().size() > 1)
             root.getChildren().remove(1,2);
