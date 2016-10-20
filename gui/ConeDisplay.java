@@ -133,12 +133,14 @@ public class ConeDisplay extends Display {
 
         h = sliderHeight.getValue();
 
-        sliderThickness.setMax(r);
+        double a = Math.sqrt(Math.pow(r,2)+Math.pow(h,2));
+        sliderThickness.setMax(((h*r)/(a+r)));
 
         t = sliderThickness.getValue();
 
         radiusLabel.setText("Radius: " + df.format(r));    
         thicknessLabel.setText("Thickness: " + df.format(t));
+        heightLabel.setText("Height: " + df.format(h));
         
         //Change myBox(GeometricObject)
         myCone.setLength(h); 
@@ -150,14 +152,13 @@ public class ConeDisplay extends Display {
         drawCone.setHeight(h); 
 
         //Change inner 3D box
-        double b = t*r/h;
-        double nh = h - t - b;
-        double nr = r-t;
-        double th = Math.sqrt(Math.pow(h/r*t,2) + Math.pow(t,2));
-        double lh = h - t - th;
-        innerCone.setRadius(r-t);
-        innerCone.setHeight(nh);
-        innerGroup.setTranslateZ(b);
+        double x = (h*t)/r;
+        double y = Math.sqrt(Math.pow(x,2)+Math.pow(t,2));
+        double nyh = h - t - y;
+        double nyl = (nyh*(r*2))/h;
+        innerCone.setRadius(nyl/2);
+        innerCone.setHeight(nyh);
+        innerGroup.setTranslateZ(t);
 
         //reset Material to force re-draw
         drawCone.setMaterial(phong);

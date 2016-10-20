@@ -1,7 +1,5 @@
 package gui;
 
-/* import geometric.Box;
-import javafx.scene.shape.Box;*/
 import javafx.scene.transform.Rotate;
 import javafx.geometry.Point3D;
 import javafx.scene.Group;
