@@ -2,7 +2,7 @@ package geometric;
 
 public class Ball extends Circle 
 {
-    double thickness;
+    private double thickness;
     public Ball()
     {
         this(5,2);
@@ -16,7 +16,7 @@ public class Ball extends Circle
     {
         return 4/3*Math.PI*Math.pow(radius,3);
     }
-    double findIVolume()
+    public double findIVolume()
     {
         if(thickness > 0)
         {

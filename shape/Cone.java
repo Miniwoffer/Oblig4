@@ -60,6 +60,7 @@ public class Cone extends MeshView {
 		this.triMesh.getPoints().addAll(this.points);
 	}
 	protected void setFaces() {
+		//p
 		int facesIndex = 0;
 		for( int i = 1; i < 21; i++) {
 			if(i == 20) {
