@@ -34,6 +34,8 @@ $(BUILD)shape/*.class: shape/*.java
 build_dir:
 	rm -rf $(BUILD)
 	mkdir $(BUILD)
+	mkdir $(BUILD)/images
+	cp images/* $(BUILD)/images
 
 clean: build/
 	rm -rf $(BUILD)
