@@ -3,7 +3,7 @@ BUILD=build/
 All: build_dir $(BUILD)Oblig4.class $(BUILD)GUI.class
 
 jar: gui
-	cd $(BUILD); jar cfe GUI.jar GUI *.class shape/*.class geometric/*.class gui/*.class
+	cd $(BUILD); jar cfe GUI.jar GUI *.class shape/*.class geometric/*.class gui/*.class images/*
 
 oblig: build_dir $(BUILD)Oblig4.class
 
