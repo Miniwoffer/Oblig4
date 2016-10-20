@@ -26,7 +26,6 @@ public class Debug {
 		}
 	}
 	public static void runArr(String[] funcs, Object obj) {
-		System.out.println("Debug runArr");
 		String[] declared = dumpObj(obj);
 		for(String func : funcs) {
 			for(String dec : declared) {
@@ -53,11 +52,8 @@ public class Debug {
 		return ret;
 	}
 	public static String[] dumpObj(Object obj) {
-		Method[] m = obj.getClass().getDeclaredMethods();
-		String[] ret = new String[m.length];
-		for(int i = 0; i < m.length; i++) {
-			ret[i] = m[i].toString();
-		}
+		Class<?> c = obj.getClass();
+		String[] ret = dumpClass(c);
 		return ret;
 	}
 

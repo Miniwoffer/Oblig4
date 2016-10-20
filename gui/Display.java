@@ -62,17 +62,16 @@ public abstract class Display {
 	        }
 		});
 		//Output labels
-		volumeLabel = new Label("Volume: " + gob.findVolume());
+		volumeLabel = new Label("Volume:\t\t" + (int)gob.findVolume() + "\t dm^3");
         volumeLabel.setTranslateX(300);
 
-		surfaceAreaLabel = new Label("Surface Area");
+		surfaceAreaLabel = new Label("Surface Area:\t" + (int)gob.findSurfaceArea() + "\t dm^2");
         surfaceAreaLabel.setTranslateX(300);
         surfaceAreaLabel.setTranslateY(20);
 		
-		weightLabel = new Label("Weight");
+		weightLabel = new Label("Weight:\t\t" + (int)gob.findWeight() + "\t Kg");
         weightLabel.setTranslateX(300);
         weightLabel.setTranslateY(40);
-        weightLabel.setText("Weight: " + gob.findWeight());
 
         methodLabels = new Group(volumeLabel, surfaceAreaLabel, weightLabel);
 
