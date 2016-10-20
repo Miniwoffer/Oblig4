@@ -44,7 +44,7 @@ public class ConeDisplay extends Display {
         //Init
         super();
 
-        myCone = new geometric.Cone(50,100);
+        myCone = new geometric.Cone(50,100,10);
 
         super.gob = myCone;
 
@@ -64,18 +64,18 @@ public class ConeDisplay extends Display {
         sliderRadius.setTranslateY(50);
 
         thicknessLabel = new Label("Thickness");
-        thicknessLabel.setTranslateY(80);
+        thicknessLabel.setTranslateY(130);
         thicknessLabel.setTranslateX(40);
         sliderThickness = new Slider(0,100,myCone.getThickness());
         sliderThickness.setShowTickLabels(true);
-        sliderThickness.setTranslateY(100);
+        sliderThickness.setTranslateY(150);
 
         heightLabel = new Label("Height");
-        heightLabel.setTranslateY(130);
+        heightLabel.setTranslateY(80);
         heightLabel.setTranslateX(40);
         sliderHeight = new Slider(0,200,myCone.getLength());
         sliderHeight.setShowTickLabels(true);
-        sliderHeight.setTranslateY(150);
+        sliderHeight.setTranslateY(100);
         
         innerGroup = new Group(
                 innerCone.mesh);
@@ -83,6 +83,8 @@ public class ConeDisplay extends Display {
         shapeGroup = new Group(
                 drawCone.mesh,
                 innerGroup);
+        shapeGroup.getTransforms().add(new Rotate(90,0,0,0,
+                    shapeGroup.sceneToLocal(new Point3D(300,0,0))));
 
         shapeGroup.setTranslateX(300);
         shapeGroup.setTranslateY(300);
@@ -112,7 +114,7 @@ public class ConeDisplay extends Display {
         //drawBox.setWidth(50).bind( sliderWidth.getValue());
 
         super.bindRotation();
-
+        updateAll();
         root = new Group(
                 shapeGroup,
                 sliderRadius,
